@@ -1,10 +1,12 @@
 class Solution:
     def get_minimizer(self, iterations: int, learning_rate: float, init: int) -> float:
+        if iterations == 0:
+            return init
         x = float(init)
         for _ in range(iterations):
-            grad = 2*x 
-            x = x - learning_rate * grad
-        return round(x) if iterations == 0 else  round(x,5)
+            x -= learning_rate * (2*x)
+        return round(x,5)
+            
 
         # Objective function: f(x) = x^2
         # Derivative:         f'(x) = 2x
